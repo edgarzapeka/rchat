@@ -22,5 +22,5 @@ Now you can open <http://localhost:3000/> in multiple tabs and try it out.
 ## Demo
 
 <p align="center">
-  <img src="./demo.png"/>
+  <img src="./demo.gif"/>
 </p>
