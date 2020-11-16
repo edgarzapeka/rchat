@@ -1,5 +1,5 @@
-import { OutputResult } from '../api/types';
-import { UserData } from '../user/types';
+import { OutputResult } from "../api/types";
+import { UserData } from "../user/types";
 import {
     FeedActionType,
     LoadFeedAction,
@@ -9,7 +9,7 @@ import {
     PostFeedAction,
     UserJoinedFeedAction,
     UserLeftFeedAction,
-} from './types';
+} from "./types";
 
 function load(messages: MessageData[], users: UserData[]): LoadFeedAction {
     return { type: FeedActionType.Load, payload: { messages, users } };

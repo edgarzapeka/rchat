@@ -1,4 +1,4 @@
-import { UserAction, UserActionType, UserState } from './types';
+import { UserAction, UserActionType, UserState } from "./types";
 
 const initialState: UserState = {
     currentUser: null,
@@ -7,7 +7,7 @@ const initialState: UserState = {
 
 export default function userReducer(
     state: UserState = initialState,
-    action: UserAction,
+    action: UserAction
 ): UserState {
     if (action.type === UserActionType.Joined) {
         if (action.payload.error) {

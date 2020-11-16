@@ -1,4 +1,10 @@
-import { ApiActionType, Input, Output, ReadApiAction, WriteApiAction } from './types';
+import {
+    ApiActionType,
+    Input,
+    Output,
+    ReadApiAction,
+    WriteApiAction,
+} from "./types";
 
 function write(input: Input): WriteApiAction {
     return { type: ApiActionType.Write, payload: input };

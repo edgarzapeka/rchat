@@ -1,8 +1,8 @@
-import { call, fork, put, StrictEffect, take } from '@redux-saga/core/effects';
-import { eventChannel, EventChannel } from 'redux-saga';
-import config from '../config';
-import apiActions from './actions';
-import { ApiActionType, Output, WriteApiAction } from './types';
+import { call, fork, put, StrictEffect, take } from "@redux-saga/core/effects";
+import { eventChannel, EventChannel } from "redux-saga";
+import config from "../config";
+import apiActions from "./actions";
+import { ApiActionType, Output, WriteApiAction } from "./types";
 
 function createWebSocketChannel(webSocket: WebSocket): EventChannel<Output> {
     return eventChannel<Output>((emit) => {
@@ -18,12 +18,17 @@ function createWebSocketChannel(webSocket: WebSocket): EventChannel<Output> {
 
 function* connectWebSocket(): Generator<StrictEffect> {
     const webSocket = new WebSocket(config.webSocketUrl);
-    const webSocketChannel = (yield call(createWebSocketChannel, webSocket)) as EventChannel<Output>;
+    const webSocketChannel = (yield call(
+        createWebSocketChannel,
+        webSocket
+    )) as EventChannel<Output>;
     yield fork(read, webSocketChannel);
     yield fork(write, webSocket);
 }
 
-function* read(webSocketChannel: EventChannel<Output>): Generator<StrictEffect> {
+function* read(
+    webSocketChannel: EventChannel<Output>
+): Generator<StrictEffect> {
     while (true) {
         const output = (yield take(webSocketChannel)) as Output;
         yield put(apiActions.read(output));

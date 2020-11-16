@@ -1,6 +1,6 @@
 export enum ApiActionType {
-    Write = 'api/write',
-    Read = 'api/read',
+    Write = "api/write",
+    Read = "api/read",
 }
 
 export type WriteApiAction = {
@@ -16,43 +16,45 @@ export type ReadApiAction = {
 export type ApiAction = WriteApiAction | ReadApiAction;
 
 export enum InputType {
-    Join = 'join',
-    Post = 'post',
+    Join = "join",
+    Post = "post",
 }
 
 export type JoinInput = {
     type: InputType.Join;
-    payload: { name: string; };
+    payload: { name: string };
 };
 
 export type PostInput = {
     type: InputType.Post;
-    payload: { body: string; };
+    payload: { body: string };
 };
 
 export type Input = JoinInput | PostInput;
 
 export enum OutputType {
-    Error = 'error',
-    Alive = 'alive',
-    Joined = 'joined',
-    UserJoined = 'user-joined',
-    UserLeft = 'user-left',
-    Posted = 'posted',
-    UserPosted = 'user-posted',
+    Error = "error",
+    Alive = "alive",
+    Joined = "joined",
+    UserJoined = "user-joined",
+    UserLeft = "user-left",
+    Posted = "posted",
+    UserPosted = "user-posted",
 }
 
 export enum OutputError {
-    NameTaken = 'name-taken',
-    InvalidName = 'invalid-name',
-    NotJoined = 'not-joined',
-    InvalidMessageBody = 'invalid-message-body',
+    NameTaken = "name-taken",
+    InvalidName = "invalid-name",
+    NotJoined = "not-joined",
+    InvalidMessageBody = "invalid-message-body",
 }
 
-export type OutputResult<T> = T & { error: false } | {
-    error: true;
-    code: OutputError;
-};
+export type OutputResult<T> =
+    | (T & { error: false })
+    | {
+          error: true;
+          code: OutputError;
+      };
 
 export type UserOutput = {
     id: string;
@@ -63,7 +65,7 @@ export type MessageOutput = {
     id: string;
     user: UserOutput;
     body: string;
-    createdAt: Date,
+    createdAt: Date;
 };
 
 export type ErrorOutput = {
@@ -113,10 +115,10 @@ export type UserPostedOutput = {
 };
 
 export type Output =
-    ErrorOutput |
-    AliveOutput |
-    JoinedOutput |
-    UserJoinedOutput |
-    UserLeftOutput |
-    PostedOutput |
-    UserPostedOutput;
+    | ErrorOutput
+    | AliveOutput
+    | JoinedOutput
+    | UserJoinedOutput
+    | UserLeftOutput
+    | PostedOutput
+    | UserPostedOutput;

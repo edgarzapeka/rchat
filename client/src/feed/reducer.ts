@@ -1,4 +1,4 @@
-import { FeedAction, FeedActionType, FeedState } from './types';
+import { FeedAction, FeedActionType, FeedState } from "./types";
 
 const initialState: FeedState = {
     postError: null,
@@ -8,15 +8,16 @@ const initialState: FeedState = {
 
 export default function feedReducer(
     state: FeedState = initialState,
-    action: FeedAction,
+    action: FeedAction
 ): FeedState {
     switch (action.type) {
         case FeedActionType.Load:
             return {
                 ...state,
                 users: action.payload.users,
-                messages: action.payload.messages
-                    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()),
+                messages: action.payload.messages.sort(
+                    (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+                ),
             };
         case FeedActionType.Posted:
             if (action.payload.error) {
@@ -27,8 +28,9 @@ export default function feedReducer(
             } else {
                 return {
                     ...state,
-                    messages: [...state.messages, action.payload.message]
-                        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()),
+                    messages: [...state.messages, action.payload.message].sort(
+                        (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+                    ),
                     postError: null,
                 };
             }
@@ -40,7 +42,9 @@ export default function feedReducer(
         case FeedActionType.UserLeft:
             return {
                 ...state,
-                users: state.users.filter((user) => user.id !== action.payload.userId),
+                users: state.users.filter(
+                    (user) => user.id !== action.payload.userId
+                ),
             };
     }
     return state;

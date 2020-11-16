@@ -1,5 +1,5 @@
-import { OutputError, OutputResult } from '../api/types';
-import { MessageData } from '../feed/types';
+import { OutputError, OutputResult } from "../api/types";
+import { MessageData } from "../feed/types";
 
 export type UserData = {
     id: string;
@@ -12,13 +12,13 @@ export type UserState = {
 };
 
 export enum UserActionType {
-    Join = 'user/join',
-    Joined = 'user/joined',
+    Join = "user/join",
+    Joined = "user/joined",
 }
 
 export type JoinUserAction = {
     type: UserActionType.Join;
-    payload: { name: string; };
+    payload: { name: string };
 };
 
 export type JoinedUserAction = {

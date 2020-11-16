@@ -1,5 +1,5 @@
-import { OutputError, OutputResult } from '../api/types';
-import { UserData } from '../user/types';
+import { OutputError, OutputResult } from "../api/types";
+import { UserData } from "../user/types";
 
 export type MessageData = {
     id: string;
@@ -15,11 +15,11 @@ export type FeedState = {
 };
 
 export enum FeedActionType {
-    Load = 'feed/load',
-    Post = 'feed/post',
-    Posted = 'feed/posted',
-    UserJoined = 'feed/user-joined',
-    UserLeft = 'feed/user-left',
+    Load = "feed/load",
+    Post = "feed/post",
+    Posted = "feed/posted",
+    UserJoined = "feed/user-joined",
+    UserLeft = "feed/user-left",
 }
 
 export type LoadFeedAction = {
@@ -53,11 +53,11 @@ export type UserJoinedFeedAction = {
 
 export type UserLeftFeedAction = {
     type: FeedActionType.UserLeft;
-    payload: { userId: string; };
+    payload: { userId: string };
 };
 
 export type FeedAction =
-    LoadFeedAction
+    | LoadFeedAction
     | PostFeedAction
     | PostedFeedAction
     | UserJoinedFeedAction

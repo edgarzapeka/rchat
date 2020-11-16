@@ -1,4 +1,4 @@
-import { InputType, JoinInput, PostInput } from './types';
+import { InputType, JoinInput, PostInput } from "./types";
 
 function join(name: string): JoinInput {
     return { type: InputType.Join, payload: { name } };
