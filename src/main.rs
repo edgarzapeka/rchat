@@ -1,7 +1,4 @@
-use tokio::prelude::*;
 use rchat::server::Server;
-use rchat::error::Result;
-use log::error;
 
 #[tokio::main]
 async fn main() {
